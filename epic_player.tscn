@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c3n4280fibrpd"]
+
+[ext_resource type="Script" uid="uid://4qu5nm3eetyx" path="res://epic_player.gd" id="1_2m845"]
+[ext_resource type="Texture2D" uid="uid://cu50rxb8tujpl" path="res://Screenshot_20260331_122620.png" id="1_tyhli"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m845"]
+radius = 7.0
+height = 22.0
+
+[node name="EpicPlayer" type="CharacterBody2D" unique_id=1458467776]
+script = ExtResource("1_2m845")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1259079395]
+shape = SubResource("CapsuleShape2D_2m845")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1916955668]
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 12.0
+texture = ExtResource("1_tyhli")
+expand_mode = 1

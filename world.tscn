@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dqdcq6g6mytck"]
+
+[ext_resource type="PackedScene" uid="uid://c3n4280fibrpd" path="res://epic_player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://caycq6gqdjeag" path="res://camera_2d.gd" id="2_fj7yv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(100000, 42)
+
+[node name="World" type="Node2D" unique_id=1088280173]
+
+[node name="EpicPlayer" parent="." unique_id=1458467776 instance=ExtResource("1_f3sb7")]
+position = Vector2(0, -15)
+
+[node name="Camera2D" type="Camera2D" parent="EpicPlayer" unique_id=2071962313]
+position = Vector2(60, 10)
+offset = Vector2(53.895, -32.945)
+zoom = Vector2(4.155, 4.155)
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.75
+drag_bottom_margin = 0.15
+script = ExtResource("2_fj7yv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1822429516]
+position = Vector2(23, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=628356484]
+position = Vector2(-22, 22)
+shape = SubResource("RectangleShape2D_fj7yv")
+debug_color = Color(0.9825645, 0, 0.365261, 0.41960785)
