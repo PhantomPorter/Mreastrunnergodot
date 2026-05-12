@@ -3,19 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://rkeq7t1jl1ur" path="res://son.jpeg" id="1_8ryga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k7bx"]
-size = Vector2(9, 9)
+size = Vector2(16, 17)
 
 [node name="spike" type="StaticBody2D" unique_id=1738386902]
 collision_layer = 5
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1927407118]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 6.0
-offset_bottom = 6.0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 9.0
+offset_bottom = 9.0
 texture = ExtResource("1_8ryga")
 expand_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=408728777]
-position = Vector2(0.49999976, 1.5)
+position = Vector2(-2.3841858e-07, 0.5)
 shape = SubResource("RectangleShape2D_7k7bx")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3n4280fibrpd"]
 
-[ext_resource type="Script" uid="uid://4qu5nm3eetyx" path="res://epic_player.gd" id="1_2m845"]
+[ext_resource type="Script" uid="uid://4qu5nm3eetyx" path="res://scripts/epic_player.gd" id="1_2m845"]
 [ext_resource type="Texture2D" uid="uid://cu50rxb8tujpl" path="res://Screenshot_20260331_122620.png" id="1_tyhli"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m845"]
