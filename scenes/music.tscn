@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dv5h15i2yirwy"]
+
+[ext_resource type="AudioStream" uid="uid://mjlfq6ewhc0u" path="res://assest/Rush'n Attack - Stages 1, 3, 5 (0CC-FamiTracker VRC6).mp3" id="1_05ggv"]
+
+[node name="music" type="AudioStreamPlayer" unique_id=1552218818]
+stream = ExtResource("1_05ggv")
+volume_db = 1.4
+autoplay = true
+parameters/looping = true

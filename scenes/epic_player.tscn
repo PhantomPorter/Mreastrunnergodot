@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c3n4280fibrpd"]
+
+[ext_resource type="Script" uid="uid://4qu5nm3eetyx" path="res://scripts/epic_player.gd" id="1_2m845"]
+[ext_resource type="Texture2D" uid="uid://vxwtymichn1v" path="res://assest/run frames/frame_0_delay-0.15s.png" id="2_vtcaa"]
+[ext_resource type="Texture2D" uid="uid://d1qiwhhkar8ni" path="res://assest/run frames/frame_1_delay-0.15s.png" id="3_tj4vd"]
+[ext_resource type="Texture2D" uid="uid://0cy21uv6r3op" path="res://assest/run frames/frame_2_delay-0.15s.png" id="4_d2xjo"]
+[ext_resource type="Texture2D" uid="uid://y45ynkens33v" path="res://assest/run frames/frame_3_delay-0.15s.png" id="5_6l2ca"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m845"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwufd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vtcaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tj4vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d2xjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6l2ca")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vtcaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tj4vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d2xjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6l2ca")
+}],
+"loop": true,
+"name": &"glide",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vtcaa")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 8.0
+}]
+
+[node name="EpicPlayer" type="CharacterBody2D" unique_id=1458467776]
+script = ExtResource("1_2m845")
+normal_gravity_scale = 1.35
+glide_gravity_scale = 0.37
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1259079395]
+shape = SubResource("CapsuleShape2D_2m845")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1855657522]
+position = Vector2(0, -1.2296605)
+scale = Vector2(0.32947913, 0.33629543)
+sprite_frames = SubResource("SpriteFrames_fwufd")
+animation = &"glide"
+autoplay = "default"
+frame_progress = 0.3136162

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqdcq6g6mytck"]
 
-[ext_resource type="PackedScene" uid="uid://c3n4280fibrpd" path="res://epic_player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://c3n4280fibrpd" path="res://scenes/epic_player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://caycq6gqdjeag" path="res://scripts/camera_2d.gd" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://d3t4isjaqklrg" path="res://scenes/spike.tscn" id="3_tlwt5"]
 
@@ -32,3 +32,15 @@ debug_color = Color(0.9825645, 0, 0.365261, 0.41960785)
 
 [node name="spike" parent="." unique_id=1738386902 instance=ExtResource("3_tlwt5")]
 position = Vector2(179, -9)
+
+[node name="spike2" parent="." unique_id=2036616381 instance=ExtResource("3_tlwt5")]
+position = Vector2(309, -9)
+
+[node name="spike3" parent="." unique_id=271113059 instance=ExtResource("3_tlwt5")]
+position = Vector2(328, -9)
+
+[node name="spike4" parent="." unique_id=318025683 instance=ExtResource("3_tlwt5")]
+position = Vector2(347, -9)
+
+[node name="spike5" parent="." unique_id=418943697 instance=ExtResource("3_tlwt5")]
+position = Vector2(366, -10)

@@ -15,6 +15,10 @@ run/main_scene="uid://dqdcq6g6mytck"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Music="*uid://dv5h15i2yirwy"
+
 [dotnet]
 
 project/assembly_name="MyabeRemake"
