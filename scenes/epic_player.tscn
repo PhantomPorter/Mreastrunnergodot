@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://y45ynkens33v" path="res://assest/run frames/frame_3_delay-0.15s.png" id="5_6l2ca"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m845"]
-radius = 7.0
+radius = 3.0
 height = 22.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fwufd"]
@@ -57,7 +57,7 @@ animations = [{
 
 [node name="EpicPlayer" type="CharacterBody2D" unique_id=1458467776]
 script = ExtResource("1_2m845")
-normal_gravity_scale = 1.35
+normal_gravity_scale = 1.4
 glide_gravity_scale = 0.37
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1259079395]
