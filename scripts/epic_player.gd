@@ -3,12 +3,13 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
+const ACCELERATION = 300
 
 @export var normal_gravity_scale: float = 1.0
 @export var glide_gravity_scale: float = 0.25 # Gravity is 4x weaker while gliding
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	velocity.x = SPEED
 	if not is_on_floor():
 	# GLIDE: Held while falling downward
 		if Input.is_action_pressed("ui_accept") and velocity.y > 0:
@@ -29,7 +30,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("jump")
 
 	# Get the input direction and handle the movement/deceleration.
-	velocity.x = SPEED
 
 	move_and_slide()
 	

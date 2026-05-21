@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c3n4280fibrpd" path="res://scenes/epic_player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://caycq6gqdjeag" path="res://scripts/camera_2d.gd" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://d3t4isjaqklrg" path="res://scenes/spike.tscn" id="3_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://bsuj6ree4su28" path="res://scenes/blackhawk_fall_2022.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" uid="uid://bsuj6ree4su28" path="res://scenes/Heli.tscn" id="4_k0juu"]
+[ext_resource type="Texture2D" uid="uid://cu50rxb8tujpl" path="res://Screenshot_20260331_122620.png" id="5_71j4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(100000, 42)
@@ -17,6 +18,7 @@ position = Vector2(0, -15)
 position = Vector2(60, 10)
 offset = Vector2(53.895, -32.945)
 zoom = Vector2(4.155, 4.155)
+process_callback = 0
 position_smoothing_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.75
@@ -48,3 +50,8 @@ position = Vector2(366, -10)
 
 [node name="Heli" parent="." unique_id=1792408513 instance=ExtResource("4_k0juu")]
 position = Vector2(471.00003, -88)
+
+[node name="Screenshot20260331122620" type="Sprite2D" parent="." unique_id=795801274]
+position = Vector2(436, 19)
+scale = Vector2(51.440006, 0.048458584)
+texture = ExtResource("5_71j4m")
