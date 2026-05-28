@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1qiwhhkar8ni" path="res://assest/run frames/frame_1_delay-0.15s.png" id="3_tj4vd"]
 [ext_resource type="Texture2D" uid="uid://0cy21uv6r3op" path="res://assest/run frames/frame_2_delay-0.15s.png" id="4_d2xjo"]
 [ext_resource type="Texture2D" uid="uid://y45ynkens33v" path="res://assest/run frames/frame_3_delay-0.15s.png" id="5_6l2ca"]
+[ext_resource type="Texture2D" uid="uid://bphycnd16o8i8" path="res://assest/run frames/slide.png" id="6_x4gwp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m845"]
 radius = 3.0
@@ -53,6 +54,14 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x4gwp")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 8.0
 }]
 
 [node name="EpicPlayer" type="CharacterBody2D" unique_id=1458467776]
@@ -68,3 +77,4 @@ position = Vector2(0, -1.2296605)
 scale = Vector2(0.32947913, 0.33629543)
 sprite_frames = SubResource("SpriteFrames_fwufd")
 autoplay = "default"
+frame_progress = 0.25346333
