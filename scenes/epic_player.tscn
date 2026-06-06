@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0cy21uv6r3op" path="res://assest/run frames/frame_2_delay-0.15s.png" id="4_d2xjo"]
 [ext_resource type="Texture2D" uid="uid://y45ynkens33v" path="res://assest/run frames/frame_3_delay-0.15s.png" id="5_6l2ca"]
 [ext_resource type="Texture2D" uid="uid://bphycnd16o8i8" path="res://assest/run frames/slide.png" id="6_x4gwp"]
+[ext_resource type="Texture2D" uid="uid://dm18xy15eltn3" path="res://assest/363px-FeedbackerRenderFull.png" id="7_y7k24"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m845"]
 radius = 3.0
@@ -64,12 +65,16 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnnrf"]
+radius = 1.0606122
+height = 45.729736
+
 [node name="EpicPlayer" type="CharacterBody2D" unique_id=1458467776]
 script = ExtResource("1_2m845")
 normal_gravity_scale = 1.4
 glide_gravity_scale = 0.37
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1259079395]
+[node name="theguy" type="CollisionShape2D" parent="." unique_id=1259079395]
 shape = SubResource("CapsuleShape2D_2m845")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1855657522]
@@ -78,3 +83,19 @@ scale = Vector2(0.32947913, 0.33629543)
 sprite_frames = SubResource("SpriteFrames_fwufd")
 autoplay = "default"
 frame_progress = 0.25346333
+
+[node name="arm" type="CollisionShape2D" parent="." unique_id=2088216047]
+visible = false
+position = Vector2(7, -10)
+rotation = -3.1415927
+scale = Vector2(2.828555, -0.6560283)
+shape = SubResource("CapsuleShape2D_fnnrf")
+
+[node name="363PxFeedbackerRenderFull" type="Sprite2D" parent="arm" unique_id=2035008820]
+position = Vector2(1.0606126, -1.5243254)
+rotation = 1.7927413
+scale = Vector2(0.04371171, 0.0398742)
+skew = 1.1148456
+texture = ExtResource("7_y7k24")
+
+[node name="armsounds" type="AudioStreamPlayer2D" parent="arm" unique_id=180101235]
