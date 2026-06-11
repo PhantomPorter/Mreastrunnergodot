@@ -6,7 +6,8 @@ const JUMP_VELOCITY = -300.0
 @export var normal_gravity_scale: float = 1.0
 @export var glide_gravity_scale: float = 0.25 
 
-@onready var collision_shape: CollisionShape2D = $theguy
+@onready var standing_collision: CollisionShape2D = $theguy
+@onready var sliding_collision: CollisionShape2D = $theguy_slide
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
@@ -17,46 +18,39 @@ var is_on_cooldown: bool = false
 const PARRY_WINDOW: float = 0.67
 const COOLDOWN_DURATION: float = 0.50 
 
-# Hitbox tracking
-@onready var normal_shape: Shape2D = collision_shape.shape
-var normal_offset: Vector2
-var slide_shape: RectangleShape2D
-var slide_offset: Vector2
-
-# Sprite offset tracking
+var currently_sliding: bool = false
 var normal_sprite_offset: Vector2
 var slide_sprite_offset: Vector2
-
 func _ready() -> void:
-	normal_offset = collision_shape.position
+	var new_shape = RectangleShape2D.new()
+	
+	
+	new_shape.size = Vector2(0, 2) 
+	
+	sliding_collision.shape = new_shape
+
+	sliding_collision.set_deferred("disabled", true)
+	standing_collision.set_deferred("disabled", false)
+	
 	normal_sprite_offset = sprite.position
 	
-	# Determine how tall the original shape is
-	var normal_height: float = 0.0
-	if normal_shape is RectangleShape2D:
-		normal_height = normal_shape.size.y
-	elif normal_shape is CapsuleShape2D:
-		normal_height = normal_shape.height
-
-	# 1. Setup the slide shape (half height, 1.2x wider)
-	slide_shape = RectangleShape2D.new()
-	if normal_shape is RectangleShape2D:
-		slide_shape.size = Vector2(normal_shape.size.x * 1.2, normal_height * 0.5)
-	elif normal_shape is CapsuleShape2D:
-		slide_shape.size = Vector2((normal_shape.radius * 2) * 1.2, normal_height * 0.5)
-
-	# 2. MATH FIX: Position the slide hitbox so its BOTTOM matches the normal hitbox's BOTTOM
-	# This completely stops floor-clipping and keeps you grounded perfectly
-	var height_difference = (normal_height - slide_shape.size.y) / 2.0
-	slide_offset = normal_offset + Vector2(0, height_difference)
+	var standing_height: float = standing_collision.shape.size.y if standing_collision.shape is RectangleShape2D else standing_collision.shape.height
+	var sliding_height: float = sliding_collision.shape.size.y
+	var height_difference = (standing_height - sliding_height) / 2.0
+	
+	# Set the slide offset destination
 	slide_sprite_offset = normal_sprite_offset + Vector2(0, height_difference)
 
-func _physics_process(delta: float) -> void:
-	velocity.x = SPEED
 
-	# Track if the player wants to slide right now
+
+func _physics_process(delta: float) -> void:
 	var is_sliding: bool = Input.is_action_pressed("ui_down")
 	
+	if is_sliding != currently_sliding:
+		set_slide_state(is_sliding)
+
+	velocity.x = SPEED
+
 	# --- HANDLE AIR STATE ---
 	if not is_on_floor():
 		if Input.is_action_pressed("ui_accept") and velocity.y > 0:
@@ -97,22 +91,26 @@ func _physics_process(delta: float) -> void:
 		try_parry()
 	
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		if collider and collider.is_in_group("spike"):
-			get_tree().call_deferred("reload_current_scene")
+
 
 func set_slide_state(sliding: bool) -> void:
+	currently_sliding = sliding
+	
 	if sliding:
 		sprite.play("slide")
-		collision_shape.shape = slide_shape
-		collision_shape.position = slide_offset
 		sprite.position = slide_sprite_offset
+		
+		standing_collision.set_deferred("disabled", true)
+		sliding_collision.set_deferred("disabled", false)
 	else:
-		collision_shape.shape = normal_shape
-		collision_shape.position = normal_offset
-		sprite.position = normal_sprite_offset 
+		sprite.play("default")
+		sprite.position = normal_sprite_offset
+		
+		standing_collision.set_deferred("disabled", false)
+		sliding_collision.set_deferred("disabled", true)
+
+
+ 
 
 func try_parry() -> void:
 	if is_parrying or is_on_cooldown:

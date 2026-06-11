@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d3t4isjaqklrg"]
 
+[ext_resource type="Script" uid="uid://b84h0jkvdjelh" path="res://scripts/spike.gd" id="1_7a7y0"]
 [ext_resource type="Texture2D" uid="uid://rkeq7t1jl1ur" path="res://assest/son.jpeg" id="1_8ryga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k7bx"]
@@ -7,6 +8,9 @@ size = Vector2(16, 17)
 
 [node name="spike" type="RigidBody2D" unique_id=810933450 groups=["spike"]]
 collision_layer = 5
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_7a7y0")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1927407118]
 offset_left = -9.0
@@ -19,3 +23,5 @@ expand_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=408728777]
 position = Vector2(-2.3841858e-07, 0.5)
 shape = SubResource("RectangleShape2D_7k7bx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

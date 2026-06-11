@@ -12,6 +12,9 @@
 radius = 3.0
 height = 22.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7k24"]
+size = Vector2(18, 10)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fwufd"]
 animations = [{
 "frames": [{
@@ -77,12 +80,18 @@ glide_gravity_scale = 0.37
 [node name="theguy" type="CollisionShape2D" parent="." unique_id=1259079395]
 shape = SubResource("CapsuleShape2D_2m845")
 
+[node name="theguy_slide" type="CollisionShape2D" parent="." unique_id=579434527]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_y7k24")
+disabled = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1855657522]
 position = Vector2(0, -1.2296605)
 scale = Vector2(0.32947913, 0.33629543)
 sprite_frames = SubResource("SpriteFrames_fwufd")
+animation = &"slide"
 autoplay = "default"
-frame_progress = 0.25346333
 
 [node name="arm" type="CollisionShape2D" parent="." unique_id=2088216047]
 visible = false

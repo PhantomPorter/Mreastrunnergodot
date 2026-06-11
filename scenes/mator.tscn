@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cgky8gjas7at2"]
+
+[ext_resource type="Texture2D" uid="uid://3reg5hvnf3c" path="res://assest/Mator.png" id="1_1rqfw"]
+[ext_resource type="Script" uid="uid://bb2t2dqd7y6gs" path="res://scripts/mator.gd" id="1_cdrgs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdrgs"]
+size = Vector2(262, 68.5)
+
+[node name="Mator" type="Area2D" unique_id=180029563 groups=["spike"]]
+collision_layer = 4
+script = ExtResource("1_cdrgs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634689299]
+position = Vector2(1, -60.25)
+shape = SubResource("RectangleShape2D_cdrgs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1361876837]
+texture = ExtResource("1_1rqfw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
